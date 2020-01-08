@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "publish": "cp CNAME ./build && surge -p ./build"
+    "publish": "npm run build; cp CNAME ./build && surge -p ./build"
   },
   "eslintConfig": {
     "extends": "react-app"
