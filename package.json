@@ -38,7 +38,6 @@
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
-    "lt": "^0.3.3",
     "surge": "^0.21.3"
   }
 }
