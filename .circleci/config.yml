@@ -1,6 +1,8 @@
 version: 2.1
 jobs:
-  build:
+  build-and-test:
+    macos:
+      xcode: "10.2.0"
     steps:
       - run:
           name: Build Success
