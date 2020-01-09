@@ -1,8 +1,8 @@
 version: 2.1
 jobs:
-  docker:
-    macos:
-      xcode: "10.2.0"
+  build:
+    docker:
+      - image: ruby:2.4.0-jessie
     steps:
       - run:
           name: Build Success
