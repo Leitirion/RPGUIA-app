@@ -2,7 +2,7 @@ version: 2.1
 workflows:
   build:
     jobs:
-      post-steps:
+      steps:
          - run:
             name: Build Success
             when: on_success
