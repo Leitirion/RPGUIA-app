@@ -1,5 +1,20 @@
-## README
-[TBD]
+
+### Frontend project with react and surge.
+
+
+### Table of Contents
+
+- Maintainers:
+
+  [github.com/mikementor](https://github.com/mikementor)
+
+  	
+		
+  [github.com/leitirion](https://github.com/leitirion)
+	 
+- How to run
+- How to install
+- How to publish
 
 ## How to run
 For build project type ```npm run build```
