@@ -1,10 +1,9 @@
 version: 2.1
-jobs:
+workflows:
   build:
-    docker:
-      - image: ruby:2.4.0-jessie
-    steps:
-      - run:
+    jobs:
+      steps:
+        - run:
           name: Build Success
           when: on_success
           command: |
