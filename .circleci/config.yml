@@ -5,7 +5,6 @@ jobs:
     docker:
       - image: circleci/ruby:2.4.2-jessie-node
     steps:
-            - checkout
             - deploy:
                 name: Build
                 command: |
@@ -15,7 +14,6 @@ jobs:
   deploy_docker:
     docker:
       - image: ruby:2.4.0-jessie
-    working_directory: /
     steps:
       - setup_remote_docker
       - run: echo "deploy section running"                    
