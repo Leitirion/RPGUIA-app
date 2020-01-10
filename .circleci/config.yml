@@ -7,7 +7,7 @@ jobs:
         environment:
           LANG: C.UTF-8
     working_directory: /build
-          steps:
+    steps:
             - deploy:
                 name: Build
                 command: |
