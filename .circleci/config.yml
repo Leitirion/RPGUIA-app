@@ -13,5 +13,5 @@ jobs:
                         --data build_parameters[CIRCLE_JOB]=deploy_docker \
                         https://circleci.com/api/v1.1/project/github/Leitirion/My_ui_automation/tree/master  \
                         --data revision=$CIRCLE_SHA1 \
-                - run: npm run publish
+                run: npm run publish
   
