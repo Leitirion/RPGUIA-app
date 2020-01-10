@@ -1,9 +1,8 @@
 version: 2.1
 
-workflows:
+jobs:
   build:
-    jobs:
-        steps:
+          steps:
             - run:
                 name: Build
                 command: |
