@@ -12,5 +12,11 @@ jobs:
                     curl --user $CIRCLE_API_USER_TOKEN \
                         --data build_parameters[CIRCLE_JOB]=deploy_docker \
                         https://circleci.com/api/v1.1/project/github/Leitirion/My_ui_automation/tree/master
-                      
+  deploy_docker:
+    docker:
+      - image: ruby:2.4.0-jessie
+    working_directory: /
+    steps:
+      - setup_remote_docker
+      - run: echo "deploy section running"                    
   
