@@ -11,15 +11,7 @@ jobs:
                     curl --user $CIRCLE_API_USER_TOKEN \
                         --data build_parameters[CIRCLE_JOB]=deploy_docker \
                         https://circleci.com/api/v1.1/project/github/Leitirion/My_ui_automation/tree/master  
-            - run:
-                command: |
-                    mkdir -p ~/reports
-                    eslint ./src/ --format junit --output-file ~/reports/eslint.xml
-                when: always
-            - store_test_results:
-                path: ~/reports
-            - store_artifacts:
-                path: ~/reports          
+        
 
                 
   
