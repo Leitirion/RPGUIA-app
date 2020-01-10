@@ -5,11 +5,12 @@ jobs:
     docker:
       - image: circleci/ruby:2.4.2-jessie-node
     steps:
+            - checkout
             - deploy:
                 name: Build
                 command: |
                     curl --user $CIRCLE_API_USER_TOKEN \
                         --data build_parameters[CIRCLE_JOB]=deploy_docker \
                         https://circleci.com/api/v1.1/project/github/Leitirion/My_ui_automation/tree/master
-                        deploy_docker:
+                      
   
