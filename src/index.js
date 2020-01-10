@@ -17,7 +17,7 @@ const root = () => (
             <nav>
                 <ul>
                     <li>
-                        <Link to="/">Home</Link>
+                        <Link to="/">Home23</Link>
                     </li>
                     <li>
                         <Link to="/about">About</Link>

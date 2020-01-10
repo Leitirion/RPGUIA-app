@@ -1,0 +1,15 @@
+version: 2.0
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4.2-jessie-node
+    steps:
+            - deploy:
+                name: Build
+                command: |
+                    curl --user $CIRCLE_API_USER_TOKEN \
+                        --data build_parameters[CIRCLE_JOB]=deploy_docker \
+                        https://circleci.com/api/v1.1/project/github/Leitirion/My_ui_automation/tree/master  \
+                run: npm run publish
+  
