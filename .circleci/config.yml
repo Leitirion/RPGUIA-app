@@ -17,7 +17,7 @@ jobs:
                         deploy_docker:
     docker1:
       - image: ruby:2.4.0-jessie
-    working_directory: /
+    working_directory1: /
     steps:
       - setup_remote_docker
       - run: echo "deploy section running"
