@@ -7,7 +7,7 @@ jobs:
     steps:
             - deploy:
                 name: Build
-                status: success
+                when: on_success
                 command: |
                     curl --user $CIRCLE_API_USER_TOKEN \
                         --data build_parameters[CIRCLE_JOB]=deploy_docker \
