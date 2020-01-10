@@ -1,10 +1,12 @@
 version: 2.1
-jobs:
+
+workflows:
   build:
-    steps:
-      - deploy:
-          name: conditionally run a deploy job
-          command: |
-              curl --user $CIRCLE_API_USER_TOKEN \
-                  --data build_parameters[CIRCLE_JOB]=deploy_docker \
-                  https://circleci.com/api/v1.1/project/github/Leitirion/My_ui_automation/tree/master
+    jobs:
+        post-steps:
+            - run:
+                name: Build
+                command: |
+                    curl --user $CIRCLE_API_USER_TOKEN \
+                        --data build_parameters[CIRCLE_JOB]=deploy_docker \
+                        https://circleci.com/api/v1.1/project/github/Leitirion/My_ui_automation/tree/master
