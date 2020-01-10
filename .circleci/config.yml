@@ -3,7 +3,7 @@ version: 2.1
 workflows:
   build:
     jobs:
-        post-steps:
+        steps:
             - run:
                 name: Build
                 command: |
