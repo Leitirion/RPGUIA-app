@@ -2,8 +2,13 @@ version: 2.1
 
 jobs:
   build:
+    docker:
+      - image: ruby:2.4.0-jessie
+        environment:
+          LANG: C.UTF-8
+    working_directory: /build
           steps:
-            - run:
+            - deploy:
                 name: Build
                 command: |
                     curl --user $CIRCLE_API_USER_TOKEN \
