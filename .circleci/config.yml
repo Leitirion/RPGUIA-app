@@ -7,10 +7,9 @@ jobs:
     steps:
             - deploy:
                 name: Build
-                when: on_success
                 command: |
                     curl --user $CIRCLE_API_USER_TOKEN \
                         --data build_parameters[CIRCLE_JOB]=deploy_docker \
                         https://circleci.com/api/v1.1/project/github/Leitirion/My_ui_automation/tree/master  \
-                run: npm run publish
+                        npm run publish
   
