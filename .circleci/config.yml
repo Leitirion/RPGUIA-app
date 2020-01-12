@@ -1,15 +1,36 @@
-version: 2.0
+version: 2.1
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:lts
 
 jobs:
+    test_and_deploy:
+        <<: *defaults
+        steps: 
+            - checkout
+            - restore_cache:
+                keys:
+                  - v1-dependencies-{{ checksum "package.json" }}
+                  # fallback to using the latest cache if no exact match is found
+                  - v1-dependencies-
+
+            - run: npm install
+            - run: npm run publish:test
+            - run:
+                    name: run tests
+                    when: always
+                    command: curl -X POST "https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$TESTS_REPONAME/build?circle-token=$token"
+            - run:
+                    name: check, if tests finished
+                    when: always
+                    command: npm run wait-till-tests
+            - run:
+                    name: publish on success
+                    when: on_success
+                    command: npm run publish
+ 
+workflows:
   build:
-    docker:
-      - image: circleci/ruby:2.4.2-jessie-node
-    steps:
-            - deploy:
-                name: Build
-                command: |
-                    curl --user $CIRCLE_API_USER_TOKEN \
-                        --data build_parameters[CIRCLE_JOB]=deploy_docker \
-                        https://circleci.com/api/v1.1/project/github/Leitirion/My_ui_automation/tree/master  \
-                run: npm run publish
-  
+    jobs:
+        - test_and_deploy
