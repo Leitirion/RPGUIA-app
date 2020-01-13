@@ -7,9 +7,7 @@ defaults: &defaults
 jobs:
     test_and_deploy:
         <<: *defaults
-        steps: 
-        context: rpguia
-
+        steps:
             - checkout
             - restore_cache:
                 keys:
@@ -41,3 +39,4 @@ workflows:
   build:
     jobs:
         - test_and_deploy
+            context: rpguia
