@@ -17,11 +17,12 @@ const root = () => (
             <nav>
                 <ul>
                     <li>
-                        <Link to="/">Home23</Link>
+                        <Link to="/">Home</Link>
                     </li>
                     <li>
                         <Link to="/about">About</Link>
                     </li>
+
                 </ul>
             </nav>
 
