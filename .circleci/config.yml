@@ -7,7 +7,7 @@ defaults: &defaults
 jobs:
     test_and_deploy:
         <<: *defaults
-        steps: 
+        steps:
             - checkout
             - restore_cache:
                 keys:
@@ -28,9 +28,12 @@ jobs:
             - run:
                     name: publish on success
                     when: on_success
-                    command: npm run publish
- 
+                    command: | 
+                        npm run publish 
+                        curl "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage?disable_web_page_preview=true&chat_id=$TELEGRAM_CHAT_ID&parse_mode=HTML&disable_notification=false&text=<a href='$CIRCLE_BUILD_URL'>$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM</a> ok ✅"
+
 workflows:
   build:
     jobs:
-        - test_and_deploy
+        - test_and_deploy:
+                context: rpguia

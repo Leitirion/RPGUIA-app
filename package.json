@@ -11,16 +11,17 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.2"
+    "semantic-ui-react": "^0.88.2",
+    "surge": "^0.21.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "publish": "npm run build; echo 'https://rpguia-prod.surge.sh' > ./build/CNAME && surge -p ./build",
-    "publish:test": "npm run build; echo 'https://rpguia-test.surge.sh' > ./build/CNAME && surge -p ./build",
-    "wait-till-tests":"node .ci/getStatusOfTests.js"
+    "publish": "npm run build; echo 'https://rpguia-prod1.surge.sh' > ./build/CNAME && surge -p ./build",
+    "publish:test": "npm run build; echo 'https://rpguia-test1.surge.sh' > ./build/CNAME && surge -p ./build",
+    "wait-till-tests": "node .ci/getStatusOfTests.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,7 +40,6 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
-    "@commitlint/config-conventional": "^8.2.0",
-    "surge": "^0.21.3"
+    "@commitlint/config-conventional": "^8.2.0"
   }
 }
