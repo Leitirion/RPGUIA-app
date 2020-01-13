@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "publish": "npm run build; echo 'https://rpguia-prod.surge.sh' > ./build/CNAME && surge -p ./build",
+    "publish": "npm run build; echo 'https://rpguia-prod1.surge.sh' > ./build/CNAME && surge -p ./build",
     "publish:test": "npm run build; echo 'https://rpguia-test1.surge.sh' > ./build/CNAME && surge -p ./build",
     "wait-till-tests": "node .ci/getStatusOfTests.js"
   },
