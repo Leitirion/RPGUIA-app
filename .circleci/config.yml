@@ -38,5 +38,4 @@ jobs:
 workflows:
   build:
     jobs:
-        - test_and_deploy: 
-            context: rpguia
+        - test_and_deploy
