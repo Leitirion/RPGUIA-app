@@ -62,7 +62,7 @@ export default class LoginPage extends Component {
             Not registered yet? <a href="#">Sign Up</a>
           </Message>
         </Grid.Column>
-      </Grid >
+      </Grid>
     )
   }
 }
