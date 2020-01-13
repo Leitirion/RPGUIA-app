@@ -6,6 +6,7 @@ defaults: &defaults
 
 jobs:
     test_and_deploy:
+        context: rpguia
         <<: *defaults
         steps: 
             - checkout
@@ -29,7 +30,6 @@ jobs:
                     name: publish on success
                     when: on_success
                     command: npm run publish 
-            context: rpguia
             - run:
                     name: notificate on success
                     when: on_success
