@@ -41,11 +41,5 @@
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
     "surge": "^0.21.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run pretest",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   }
 }
