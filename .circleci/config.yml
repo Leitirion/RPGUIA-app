@@ -6,7 +6,6 @@ defaults: &defaults
 
 jobs:
     test_and_deploy:
-        context: rpguia
         <<: *defaults
         steps: 
             - checkout
@@ -27,6 +26,7 @@ jobs:
                     when: always
                     command: npm run wait-till-tests
             - run:
+                    context: rpguia
                     name: publish on success
                     when: on_success
                     command: |
