@@ -1,6 +1,6 @@
 
 ### Frontend project with react and surge.
-
+[![CircleCI](https://circleci.com/gh/Leitirion/My-circleci-cypress-ui-automation.svg?style=svg)](https://circleci.com/gh/Leitirion/My-circleci-cypress-ui-automation)
 
 ### Table of Contents
 
