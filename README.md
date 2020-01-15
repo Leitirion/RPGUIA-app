@@ -12,16 +12,15 @@
 		
   [github.com/leitirion](https://github.com/leitirion)
 	 
-- How to run
+- How to run and publish
 - How to install
 - How to publish
 
-## How to run
-For build project type ```npm run build```
+## How to run and publish
+1. For test project and see work it or not type ```npm run start``` (this show your project on your localhost)
+2. For manually build project to test machine on surge.sh or your domen use ```npm run publish:test``` (To change domen rename URL in ```package.json```)
+3. After test succeed use ```npm run publish``` to build to surge or your domen
 
 ## How to install
-1) To create React App use ```https://github.com/facebook/create-react-app.git```
-2) For front-end use ```https://surge.sh/help/getting-started-with-surge```
-3) Use video ```https://www.youtube.com/watch?v=wXDdznD4UGo```
-## How to publish 
-Project uses surge.sh for publishing. 
+1. For start and config your project on react and surge use video ```https://www.youtube.com/watch?v=wXDdznD4UGo```
+
