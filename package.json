@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
+    "eslint": "^6.8.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
@@ -21,7 +22,8 @@
     "eject": "react-scripts eject",
     "publish": "npm run build; echo 'https://rpguia-prod1.surge.sh' > ./build/CNAME && surge -p ./build",
     "publish:test": "npm run build; echo 'https://rpguia-test1.surge.sh' > ./build/CNAME && surge -p ./build",
-    "wait-till-tests": "node .ci/getStatusOfTests.js"
+    "wait-till-tests": "node .ci/getStatusOfTests.js",
+    "pretest": "./node_modules/.bin/eslint --ignore-path .gitignore . --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -40,6 +42,14 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
-    "@commitlint/config-conventional": "^8.2.0"
+    "@commitlint/config-conventional": "^8.2.0",
+    "husky": "^4.0.10",
+    "lint-staged": "^9.5.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pretest",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
