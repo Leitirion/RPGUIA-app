@@ -17,9 +17,6 @@ const root = () => (
             <nav>
                 <ul>
                     <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
                         <Link to="/about">About</Link>
                     </li>
 
@@ -32,9 +29,9 @@ const root = () => (
                 <Route path="/about">
                     <span>About</span>
                 </Route>
-                <Route path="/">
-                    <App />
-                </Route>
+
+                <App />
+
             </Switch>
         </div>
     </Router>
