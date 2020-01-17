@@ -59,7 +59,7 @@ export default class LoginPage extends Component {
         <Grid.Column>
           <Header as="h2" textAlign="center">
 
-            Welcome! Please login:
+            Welcome! Login:
 
           </Header>
           <Segment>
