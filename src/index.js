@@ -10,30 +10,70 @@ import {
     Route,
     Link
 } from "react-router-dom";
+import {
+    Header
+} from 'semantic-ui-react';
 
 const root = () => (
     <Router>
         <div>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/about">About</Link>
-                    </li>
+            <div class="ui tabular menu">
+                <a class="item active">
+                    <i class="home icon"></i>
+                    <Link to="/">RPGUIA</Link>
 
-                </ul>
-            </nav>
-
+                </a>
+                <a class="item">
+                    <i class="help icon"></i>
+                    <Link to="/about">About</Link>
+                </a>
+                <a class="item">
+                    <i class="book icon"></i>
+                    <Link to="/links">Links</Link>
+                </a>
+            </div>
             {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
             <Switch>
                 <Route path="/about">
-                    <span>About</span>
+                    <div class="ui buttons"><div class="ui labeled icon button">
+                        <i class="left chevron icon"></i>
+                        <Link to="/">Back</Link>
+                    </div>
+                    </div>
+                    <Header as="h2" textAlign="center">
+                        <span>About</span>
+                    </Header>
                 </Route>
-
+                <Route path="/dashboard">
+                    <div class="ui buttons"><div class="ui labeled icon button">
+                        <i class="left chevron icon"></i>
+                        <Link to="/">Back</Link>
+                    </div>
+                    </div>
+                    <ul>
+                        <Header as="h2" textAlign="center">
+                            <span>Hello to dashboard!</span>
+                        </Header>
+                    </ul>
+                </Route>
+                <Route path="/links">
+                    <div class="ui buttons"><div class="ui labeled icon button">
+                        <i class="left chevron icon"></i>
+                        <Link to="/">Back</Link>
+                    </div>
+                    </div>
+                    <ul>
+                        <Header as="h2" textAlign="center">
+                            <span>Some links</span>
+                        </Header>
+                    </ul>
+                </Route>
                 <App />
-
             </Switch>
+
         </div>
+
     </Router>
 )
 ReactDOM.render(root(), document.getElementById('root'));
