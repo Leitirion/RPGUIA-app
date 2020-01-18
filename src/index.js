@@ -31,6 +31,10 @@ const root = () => (
                     <i class="book icon"></i>
                     <Link to="/links">Links</Link>
                 </a>
+                <a class="item">
+                    <i class="user icon"></i>
+                    <Link to="/login">Login</Link>
+                </a>
             </div>
             {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -53,7 +57,7 @@ const root = () => (
                     </div>
                     <ul>
                         <Header as="h2" textAlign="center">
-                            <span>Hello to dashboard!</span>
+                            <span>Hello!</span>
                         </Header>
                     </ul>
                 </Route>
@@ -69,7 +73,12 @@ const root = () => (
                         </Header>
                     </ul>
                 </Route>
-                <App />
+                <Route path="/login">
+                    <App />
+                </Route>
+                <Header as="h2" textAlign="center">
+                    <span>Welcome to RPGUIA!</span>
+                </Header>
             </Switch>
 
         </div>
