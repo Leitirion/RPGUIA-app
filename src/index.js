@@ -14,6 +14,9 @@ import {
     Header
 } from 'semantic-ui-react';
 
+
+
+
 const root = () => (
     <Router>
         <div>
@@ -21,7 +24,6 @@ const root = () => (
                 <a class="item active">
                     <i class="home icon"></i>
                     <Link to="/">RPGUIA</Link>
-
                 </a>
                 <a class="item">
                     <i class="help icon"></i>
@@ -40,10 +42,11 @@ const root = () => (
             renders the first one that matches the current URL. */}
             <Switch>
                 <Route path="/about">
-                    <div class="ui buttons"><div class="ui labeled icon button">
-                        <i class="left chevron icon"></i>
-                        <Link to="/">Back</Link>
-                    </div>
+                    <div class="ui buttons">
+                        <button class="ui icon left labeled button">
+                            <i aria-hidden="true" class="left chevron icon"></i>
+                            <Link to="/">Back</Link>
+                        </button>
                     </div>
                     <Header as="h2" textAlign="center">
                         <span>About</span>
