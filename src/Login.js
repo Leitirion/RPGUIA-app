@@ -10,8 +10,7 @@ import {
 import 'semantic-ui-css/semantic.min.css';
 import {
   Redirect,
-  Link,
-  Switch
+  Link
 } from "react-router-dom"
 
 
@@ -48,6 +47,7 @@ export default class LoginPage extends Component {
   renderRedirect = () => {
     if (this.state.redirect) {
       return <Redirect to='/dashboard' />
+
     }
   }
 
@@ -59,7 +59,7 @@ export default class LoginPage extends Component {
         <Grid.Column>
           <Header as="h2" textAlign="center">
 
-            <Link to="/">Login</Link>
+            Welcome! Login:
 
           </Header>
           <Segment>
@@ -84,7 +84,7 @@ export default class LoginPage extends Component {
 
               <div>
                 {this.renderRedirect()}
-                <Button color="blue" fluid size="large" onClick={this.login} >
+                <Button color="green" fluid size="large" onClick={this.login} >
                   Login
               </Button>
 

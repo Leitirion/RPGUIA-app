@@ -23,3 +23,10 @@ yarn-debug.log*
 yarn-error.log*
 
 CNAME
+/src/firebase
+.firebaserc
+
+firestore.rules
+
+
+.firebase
