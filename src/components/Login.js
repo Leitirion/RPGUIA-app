@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { loginUser } from "../actions";
 import { withStyles } from "@material-ui/styles";
 
@@ -42,7 +42,7 @@ const styles = () => ({
 });
 
 class Login extends Component {
-    state = { email: "", password: "" };
+    state = { email: "", password: "", redirect: false };
 
     handleEmailChange = ({ target }) => {
         this.setState({ email: target.value });
@@ -58,6 +58,22 @@ class Login extends Component {
 
         dispatch(loginUser(email, password));
     };
+    setRedirect = () => {
+        this.setState({
+            redirect: true
+        })
+    }
+    handleSubmit2 = () => {
+        this.setState({
+            redirect: true
+        })
+    };
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to='/signup' />
+
+        }
+    }
 
     render() {
         const { classes, loginError, isAuthenticated } = this.props;
@@ -107,7 +123,16 @@ class Login extends Component {
                         >
                             Sign In
             </Button>
-                        <p> Not registered yet? <Link to="/signup">Sign Up</Link> </p>
+                        {this.renderRedirect()}
+                        <Button
+                            type="button"
+                            fullWidth
+
+                            className={classes.submit}
+                            onClick={this.handleSubmit2}
+                        >
+                            Not registered yet? Sign Up!
+            </Button>
                     </Paper>
                 </Container>
             );

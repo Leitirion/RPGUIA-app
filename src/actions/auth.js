@@ -10,6 +10,8 @@ export const LOGOUT_FAILURE = "LOGOUT_FAILURE";
 
 export const VERIFY_REQUEST = "VERIFY_REQUEST";
 export const VERIFY_SUCCESS = "VERIFY_SUCCESS";
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const SIGNUP_ERROR = "SIGNUP_ERROR";
 
 const requestLogin = () => {
     return {
@@ -29,6 +31,7 @@ const loginError = () => {
         type: LOGIN_FAILURE
     };
 };
+
 
 const requestLogout = () => {
     return {
@@ -59,6 +62,15 @@ const verifySuccess = () => {
         type: VERIFY_SUCCESS
     };
 };
+
+
+const loginSuccess = () => {
+    return {
+        type: SIGNUP_SUCCESS
+    };
+};
+
+
 
 export const loginUser = (email, password) => dispatch => {
     dispatch(requestLogin());
@@ -98,4 +110,51 @@ export const verifyAuth = () => dispatch => {
             }
             dispatch(verifySuccess());
         });
+};
+
+// Signing up with Firebase
+export const signup = (email, password) => async dispatch => {
+    try {
+        myFirebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            .dispatch(loginSuccess())
+            .then(dataBeforeEmail => {
+                myFirebase.auth().onAuthStateChanged(function (user) {
+                    user.sendEmailVerification();
+                });
+            })
+            .then(dataAfterEmail => {
+                myFirebase.auth().onAuthStateChanged(function (user) {
+                    if (user.emailVerified) {
+                        // Email is verified
+                        dispatch({
+                            type: SIGNUP_SUCCESS,
+                            payload:
+                                "Your account was successfully created! Now you need to verify your e-mail address, please go check your inbox."
+                        });
+                    } else {
+                        // Email is not verified
+                        dispatch({
+                            type: SIGNUP_ERROR,
+                            payload:
+                                "Something went wrong, we couldn't create your account. Please try again."
+                        });
+                    }
+                });
+            })
+            .catch(function (error) {
+                dispatch({
+                    type: SIGNUP_ERROR,
+                    payload:
+                        "Something went wrong, we couldn't create your account. Please try again."
+                });
+            });
+    } catch (err) {
+        dispatch({
+            type: SIGNUP_ERROR,
+            payload:
+                "Something went wrong, we couldn't create your account. Please try again."
+        });
+    }
 };
