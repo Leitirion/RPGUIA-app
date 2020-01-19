@@ -22,6 +22,7 @@ import { connect } from "react-redux";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./components/Home";
 import Login from "./components/Login";
+import { Signup } from "./components/Signup";
 
 function App(props) {
   const { isAuthenticated, isVerifying } = props;
@@ -35,6 +36,7 @@ function App(props) {
         isVerifying={isVerifying}
       />
       <Route path="/login" component={Login} />
+      <Route path="/signup" component={Signup} />
     </Switch>
   );
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { loginUser } from "../actions";
 import { withStyles } from "@material-ui/styles";
 
@@ -11,6 +11,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
+
 
 const styles = () => ({
     "@global": {
@@ -106,6 +107,7 @@ class Login extends Component {
                         >
                             Sign In
             </Button>
+                        <p> Not registered yet? <Link to="/signup">Sign Up</Link> </p>
                     </Paper>
                 </Container>
             );
