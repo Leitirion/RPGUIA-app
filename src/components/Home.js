@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions";
+import Button from "@material-ui/core/Button";
 class Home extends Component {
     handleLogout = () => {
         const { dispatch } = this.props;
@@ -13,7 +14,11 @@ class Home extends Component {
                 <center>
                     <h1>Hello to your login page!</h1>
 
-                    <button onClick={this.handleLogout}>Logout</button></center>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={this.handleLogout}>Logout</Button>
+                </center>
                 {isLoggingOut && <p>Logging Out....</p>}
                 {logoutError && <p>Error logging out</p>}
             </div>
