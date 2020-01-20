@@ -77,61 +77,61 @@ class Signup extends Component {
 
     render() {
         const { classes, signUpfail, isAuthenticated } = this.props;
-        if (isAuthenticated) {
-            return <Redirect to="/" />;
-        } else {
-            return (
+        //if (isAuthenticated) {
+        //  return <Redirect to="/login" />;
+        // } else {
+        return (
 
-                <Container component="main" maxWidth="xs">
-                    <Paper className={classes.paper}>
-                        <Typography component="h1" variant="h5">
-                            For registration type your email and password:
+            <Container component="main" maxWidth="xs">
+                <Paper className={classes.paper}>
+                    <Typography component="h1" variant="h5">
+                        For registration type your email and password:
             </Typography>
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            onChange={this.handleEmailChange}
-                        />
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            onChange={this.handlePasswordChange}
-                        />
-                        {signUpfail && (
-                            <Typography component="p" className={classes.errorText}>
-                                Something wrong!
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        id="email"
+                        label="Email Address"
+                        name="email"
+                        onChange={this.handleEmailChange}
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        type="password"
+                        id="password"
+                        onChange={this.handlePasswordChange}
+                    />
+                    {signUpfail && (
+                        <Typography component="p" className={classes.errorText}>
+                            Something wrong!
               </Typography>
-                        )}
+                    )}
 
-                        <div className="form-group"  >
-                            <Button type="button"
-                                variant="contained"
-                                color="primary"
-                                className={classes.submit}
-                                onClick={this.handleSubmit}
-                            >Register</Button>
-                            {this.renderRedirect()}
-                            <Button type="button"
+                    <div className="form-group"  >
+                        <Button type="button"
+                            variant="contained"
+                            color="primary"
+                            //className={classes.submit}
+                            onClick={this.handleSubmit}
+                        >Register</Button>
+                        {this.renderRedirect()}
+                        <Button type="button"
 
-                                onClick={this.handleSubmit2}
-                            >Cancel</Button>
-                        </div>
-                    </Paper>
-                </Container>
-            );
-        }
+                            onClick={this.handleSubmit2}
+                        >Back</Button>
+                    </div>
+                </Paper>
+            </Container>
+        );
     }
-
 }
+
+//}
 function mapStateToProps(state) {
     return {
         loginSuccess: state.auth.loginSuccess,

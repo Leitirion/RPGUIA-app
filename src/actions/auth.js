@@ -64,9 +64,9 @@ const verifySuccess = () => {
 };
 
 
-const loginSuccess = () => {
+const signUpfail = () => {
     return {
-        type: SIGNUP_SUCCESS
+        type: SIGNUP_ERROR
     };
 };
 
@@ -118,7 +118,7 @@ export const signup = (email, password) => async dispatch => {
         myFirebase
             .auth()
             .createUserWithEmailAndPassword(email, password)
-            .dispatch(loginSuccess())
+
             .then(dataBeforeEmail => {
                 myFirebase.auth().onAuthStateChanged(function (user) {
                     user.sendEmailVerification();
@@ -144,11 +144,8 @@ export const signup = (email, password) => async dispatch => {
                 });
             })
             .catch(function (error) {
-                dispatch({
-                    type: SIGNUP_ERROR,
-                    payload:
-                        "Something went wrong, we couldn't create your account. Please try again."
-                });
+                dispatch(
+                    signUpfail());
             });
     } catch (err) {
         dispatch({
