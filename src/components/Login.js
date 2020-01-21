@@ -118,6 +118,7 @@ class Login extends Component {
                             fullWidth
                             variant="contained"
                             color="primary"
+                            id="signin"
                             className={classes.submit}
                             onClick={this.handleSubmit}
                         >
@@ -127,7 +128,7 @@ class Login extends Component {
                         <Button
                             type="button"
                             fullWidth
-
+                            id="signup"
                             className={classes.submit}
                             onClick={this.handleSubmit2}
                         >

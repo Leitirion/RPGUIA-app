@@ -17,6 +17,7 @@ class Home extends Component {
                     <Button
                         variant="contained"
                         color="primary"
+                        id="logout"
                         onClick={this.handleLogout}>Logout</Button>
                 </center>
                 {isLoggingOut && <p>Logging Out....</p>}
