@@ -87,7 +87,7 @@ class Login extends Component {
                             <LockOutlinedIcon />
                         </Avatar>
                         <Typography component="h1" variant="h5">
-                            <div class="title_for_homepage">
+                            <div class="title_for_login_page">
                                 Welcome! Sign in:
                     </div>
                         </Typography>
