@@ -10,7 +10,7 @@ class Home extends Component {
     render() {
         const { isLoggingOut, logoutError } = this.props;
         return (
-            <div className="title">
+            <div className="title_for_homepage">
                 <center>
                     <h1>Hello to your login page!</h1>
 
