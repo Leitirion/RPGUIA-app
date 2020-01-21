@@ -10,13 +10,15 @@ class Home extends Component {
     render() {
         const { isLoggingOut, logoutError } = this.props;
         return (
-            <div>
+            <div class="title">
                 <center>
-                    <h1>Hello to your login page!</h1>
-
+                    <div class="title_for_homepage">
+                        <h1>Hello to your login page!</h1>
+                    </div>
                     <Button
                         variant="contained"
                         color="primary"
+                        id="logout"
                         onClick={this.handleLogout}>Logout</Button>
                 </center>
                 {isLoggingOut && <p>Logging Out....</p>}

@@ -87,8 +87,10 @@ class Login extends Component {
                             <LockOutlinedIcon />
                         </Avatar>
                         <Typography component="h1" variant="h5">
-                            Welcome! Sign in:
-            </Typography>
+                            
+                                Welcome! Sign in:
+                
+                        </Typography>
                         <TextField
                             variant="outlined"
                             margin="normal"
@@ -118,6 +120,7 @@ class Login extends Component {
                             fullWidth
                             variant="contained"
                             color="primary"
+                            id="signin"
                             className={classes.submit}
                             onClick={this.handleSubmit}
                         >
@@ -127,7 +130,7 @@ class Login extends Component {
                         <Button
                             type="button"
                             fullWidth
-
+                            id="signup"
                             className={classes.submit}
                             onClick={this.handleSubmit2}
                         >
