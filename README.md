@@ -14,7 +14,6 @@
 	 
 - How to run and publish
 - How to install
-- How to publish
 
 ## How to run and publish
 1. For test project and see work it or not type ```npm run start``` (this show your project on your localhost)
