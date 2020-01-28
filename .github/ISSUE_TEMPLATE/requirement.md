@@ -2,7 +2,7 @@
 name: Requirement
 about: Create new requirement
 title: ''
-labels: ''
+labels: Requirement
 assignees: ''
 
 ---
