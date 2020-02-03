@@ -18,7 +18,7 @@
 ## How to run and publish
 1. For test project and see work it or not, type ```npm run start``` (this show your project on your localhost)
 2. For manually build project to test machine on surge.sh or on your domen use ```npm run build```
-3. After test succeed, use command ```firebase deploy``` to build to firebase or your command to build to your domen.
+3. After test succeed, use command ```firebase deploy``` to build to firebase or your command to build to your domen (this show your project on your domen page)
 
 ## How to install
 1. Run the following command to install firebase-tools.
