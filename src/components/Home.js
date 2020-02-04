@@ -61,26 +61,37 @@ class Home extends Component {
         const { isLoggingOut, logoutError } = this.props;
         return (
             <div class="title">
+
                 <center>
-                    <div class="title_for_homepage">
-                        <h1>Hello to your login page!</h1>
+                    <h1>Hello to your login page!</h1>
+                </center>
+                <div className="container-fluid">
+                    <div className="row">
+                        <header style={{ margin: '20px 0 40px 0' }} className="App-header col col-12"></header>
                         <main className="col col-12">
                             <form onSubmit={this.handleSubmit} style={{ marginBottom: '20px' }}>
                                 <input name="todo" onChange={this.handleChange} value={todo} className="form-control" type="text" placeholder="Enter todo here...[Press Enter]" autoComplete="off" />
                             </form>
-                            <ul className="todos">
+                            <ul className="todos list-groups" style={{ padding: 0 }}>
                                 {(todos.length === 0)
                                     ? (<li className="todo list-group-item">No todos yet</li>)
                                     : (todos.map((item, key) => (
-                                        <li checked={item.done} key={`list-${(key + 1)}`} className="todo">
-                                            <input onChange={() => this.handleCheckbox(key)} checked={item.done} type="checkbox" />
+                                        <li checked={item.done} key={`list-${(key + 1)}`} className="todo list-group-item">
+                                            <input onChange={() => this.handleCheckbox(key)} checked={item.done} className="form-control" type="checkbox" />
                                             <span style={{
-
+                                                top: 0,
+                                                bottom: 0,
+                                                left: '3rem',
+                                                right: '5rem',
+                                                lineHeight: '62px',
+                                                display: 'block',
+                                                position: 'absolute',
                                                 textDecoration: (item.done) ? 'line-through' : 'none',
                                             }}>{item.text}</span>
                                             <button onClick={() => this.handleRemove(key)} type="button"
                                                 className="btn btn-sm btn-danger"
                                                 style={{
+                                                    position: 'absolute',
                                                     top: 0,
                                                     bottom: 0,
                                                     right: '1.25rem',
@@ -94,8 +105,12 @@ class Home extends Component {
                                 }
 
                             </ul>
+
                         </main>
                     </div>
+                </div>
+
+                <center>
                     <Button
                         variant="contained"
                         color="primary"
