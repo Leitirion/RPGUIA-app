@@ -24,6 +24,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 
+
 function App(props) {
   const { isAuthenticated, isVerifying, isRegistred } = props;
   return (
@@ -51,3 +52,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(App);
+

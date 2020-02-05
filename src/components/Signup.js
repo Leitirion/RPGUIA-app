@@ -76,7 +76,7 @@ class Signup extends Component {
     }
 
     render() {
-        const { classes, signUpfail, isAuthenticated } = this.props;
+        const { classes, signUpfail } = this.props;
         //if (isAuthenticated) {
         //  return <Redirect to="/login" />;
         // } else {
