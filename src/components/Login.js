@@ -74,6 +74,11 @@ class Login extends Component {
 
         }
     }
+    keyPressed(event) {
+        if (event.key === "Enter") {
+            document.getElementById("signin").click();
+        }
+      }
 
     render() {
         const { classes, loginError, isAuthenticated } = this.props;
@@ -109,6 +114,7 @@ class Login extends Component {
                             type="password"
                             id="password"
                             onChange={this.handlePasswordChange}
+                            onKeyPress={this.keyPressed}
                         />
                         {loginError && (
                             <Typography component="p" className={classes.errorText}>
