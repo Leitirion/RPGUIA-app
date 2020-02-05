@@ -61,10 +61,11 @@ class Home extends Component {
         const { isLoggingOut, logoutError } = this.props;
         return (
             <div class="title">
-
-                <center>
-                    <h1>Hello to your login page!</h1>
-                </center>
+                <div class="title_for_homepage">
+                    <center>
+                        <h1>Hello to your login page!</h1>
+                    </center>
+                </div>
                 <div className="container-fluid">
                     <div className="row">
                         <header style={{ margin: '20px 0 40px 0' }} className="App-header col col-12"></header>
