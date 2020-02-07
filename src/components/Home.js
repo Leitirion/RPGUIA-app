@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions";
 import Button from "@material-ui/core/Button";
+
+
 class Home extends Component {
     state = {
         todo: '',
         todos: [{
             text: 'A new todo name',
             done: false,
-        }],
+        }]
     };
     handleRemove = (index) => {
         // grab original todos from state
@@ -61,6 +63,11 @@ class Home extends Component {
         const { isLoggingOut, logoutError } = this.props;
         return (
             <div class="title">
+                <Button
+                    variant="contained"
+                    color="primary"
+                    id="logout"
+                    onClick={this.handleLogout}>Logout</Button>
                 <div class="title_for_homepage">
                     <center>
                         <h1>Hello to your login page!</h1>
@@ -111,13 +118,6 @@ class Home extends Component {
                     </div>
                 </div>
 
-                <center>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        id="logout"
-                        onClick={this.handleLogout}>Logout</Button>
-                </center>
                 {isLoggingOut && <p>Logging Out....</p>}
                 {logoutError && <p>Error logging out</p>}
             </div>

@@ -28,5 +28,5 @@ CNAME
 
 firestore.rules
 
-
+/src/components/test.js
 .firebase

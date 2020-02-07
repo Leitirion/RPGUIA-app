@@ -23,7 +23,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-
+import test from "./components/test";
 
 function App(props) {
   const { isAuthenticated, isVerifying, isRegistred } = props;
@@ -39,6 +39,7 @@ function App(props) {
       />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
+      <Route path="/test" component={test} />
     </Switch>
   );
 }
@@ -52,4 +53,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(App);
-
