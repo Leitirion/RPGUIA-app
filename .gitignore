@@ -30,3 +30,5 @@ firestore.rules
 
 /src/components/test.js
 .firebase
+
+/src/Login-old-for-test.js
