@@ -35,8 +35,8 @@
 ```npm install react-router-dom```
 7. And finally, lets install firebase which allows to interact with firebase within react app:
 ```npm install firebase```
-8. For Material-UI use:
+8. For install Material-UI use:
 ```npm install @material-ui/core```
-9. Install the material icon library:
+9. Then install the material icon library:
 ```npm install @material-ui/icons```
 
