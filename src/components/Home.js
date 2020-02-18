@@ -78,7 +78,7 @@ class Home extends Component {
                         <header style={{ margin: '20px 0 40px 0' }} className="App-header col col-12"></header>
                         <main className="col col-12">
                             <form onSubmit={this.handleSubmit} style={{ marginBottom: '20px' }}>
-                                <input name="todo" onChange={this.handleChange} value={todo} className="form-control" type="text" placeholder="Enter todo here...[Press Enter]" autoComplete="off" />
+                                <input id="todo" name="todo" onChange={this.handleChange} value={todo} className="form-control" type="text" placeholder="Enter todo here...[Press Enter]" autoComplete="off" />
                             </form>
                             <ul className="todos list-groups" style={{ padding: 0 }}>
                                 {(todos.length === 0)
@@ -86,7 +86,7 @@ class Home extends Component {
                                     : (todos.map((item, key) => (
                                         <li checked={item.done} key={`list-${(key + 1)}`} className="todo list-group-item">
                                             <input onChange={() => this.handleCheckbox(key)} checked={item.done} className="form-control" type="checkbox" />
-                                            <span style={{
+                                            <span id="item_text" style={{
                                                 top: 0,
                                                 bottom: 0,
                                                 left: '3rem',
