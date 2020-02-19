@@ -96,7 +96,7 @@ class Home extends Component {
                                                 position: 'absolute',
                                                 textDecoration: (item.done) ? 'line-through' : 'none',
                                             }}>{item.text}</span>
-                                            <button onClick={() => this.handleRemove(key)} type="button"
+                                            <button id="del_button" onClick={() => this.handleRemove(key)} type="button"
                                                 className="btn btn-sm btn-danger"
                                                 style={{
                                                     position: 'absolute',
