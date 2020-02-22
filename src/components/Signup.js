@@ -113,15 +113,18 @@ class Signup extends Component {
                     )}
 
                     <div className="form-group"  >
-                        <Button type="button"
+                        <Button
+                            id="reg_button"
+                            type="button"
                             variant="contained"
                             color="primary"
                             //className={classes.submit}
                             onClick={this.handleSubmit}
                         >Register</Button>
                         {this.renderRedirect()}
-                        <Button type="button"
-
+                        <Button
+                            id="back_button"
+                            type="button"
                             onClick={this.handleSubmit2}
                         >Back</Button>
                     </div>
