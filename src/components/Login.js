@@ -131,7 +131,7 @@ class Login extends Component {
                             onClick={this.handleSubmit}
                         >
                             Sign In
-            </Button>
+                        </Button>
                         {this.renderRedirect()}
                         <Button
                             type="button"
@@ -141,7 +141,7 @@ class Login extends Component {
                             onClick={this.handleSubmit2}
                         >
                             Not registered yet? Sign Up!
-            </Button>
+                        </Button>
                     </Paper>
                 </Container>
             );

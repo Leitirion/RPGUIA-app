@@ -63,11 +63,7 @@ class Home extends Component {
         const { isLoggingOut, logoutError } = this.props;
         return (
             <div class="title">
-                <Button
-                    variant="contained"
-                    color="primary"
-                    id="logout"
-                    onClick={this.handleLogout}>Logout</Button>
+
                 <div class="title_for_homepage">
                     <center>
                         <h1>Hello to your login page!</h1>
@@ -113,7 +109,13 @@ class Home extends Component {
                                 }
 
                             </ul>
-
+                            <center>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    id="logout"
+                                    onClick={this.handleLogout}>Logout</Button>
+                            </center>
                         </main>
                     </div>
                 </div>

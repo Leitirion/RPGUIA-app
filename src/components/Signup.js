@@ -39,7 +39,7 @@ const styles = () => ({
 });
 
 class Signup extends Component {
-    state = { email: "", password: "" };
+    state = { email: "", password: "", redirect: false };
 
     handleEmailChange = ({ target }) => {
         this.setState({ email: target.value });
@@ -70,16 +70,14 @@ class Signup extends Component {
     };
     renderRedirect = () => {
         if (this.state.redirect) {
-            return <Redirect to='/login' />
+            return <Redirect to='/' />
 
         }
     }
 
     render() {
         const { classes, signUpfail } = this.props;
-        //if (isAuthenticated) {
-        //  return <Redirect to="/login" />;
-        // } else {
+
         return (
 
             <Container component="main" maxWidth="xs">
@@ -134,7 +132,6 @@ class Signup extends Component {
     }
 }
 
-//}
 function mapStateToProps(state) {
     return {
         loginSuccess: state.auth.loginSuccess,

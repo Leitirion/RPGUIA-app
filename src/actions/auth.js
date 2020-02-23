@@ -72,6 +72,7 @@ const signUpfail = () => {
 
 
 
+
 export const loginUser = (email, password) => dispatch => {
     dispatch(requestLogin());
     myFirebase
@@ -118,8 +119,8 @@ export const signup = (email, password) => async dispatch => {
         myFirebase
             .auth()
             .createUserWithEmailAndPassword(email, password)
-
-            .then(dataBeforeEmail => {
+            .signOut()
+            /*.then(dataBeforeEmail => {
                 myFirebase.auth().onAuthStateChanged(function (user) {
                     user.sendEmailVerification();
                 });
@@ -143,6 +144,8 @@ export const signup = (email, password) => async dispatch => {
                     }
                 });
             })
+            */
+
             .catch(function (error) {
                 dispatch(
                     signUpfail());
