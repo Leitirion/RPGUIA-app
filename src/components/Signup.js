@@ -54,9 +54,6 @@ class Signup extends Component {
         const { email, password } = this.state;
 
         dispatch(signup(email, password));
-        if (!this.validateEmpty()) {
-            alert('fill all the fields!')
-        }
     };
     setRedirect = () => {
         this.setState({
@@ -106,8 +103,8 @@ class Signup extends Component {
                     />
                     {signUpfail && (
                         <Typography component="p" className={classes.errorText}>
-                            Something wrong!
-              </Typography>
+
+                        </Typography>
                     )}
 
                     <div className="form-group"  >

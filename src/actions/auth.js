@@ -146,15 +146,17 @@ export const signup = (email, password) => async dispatch => {
             })
 
 
-            .catch(function (error) {
-                dispatch(
-                    signUpfail());
-            });
+            /* .catch(function (error) {
+                 dispatch(
+                     signUpfail());
+             });
+    */
+
+            .catch(error => {
+                alert(error.message);
+            })
     } catch (err) {
-        dispatch({
-            type: SIGNUP_ERROR,
-            payload:
-                "Something went wrong, we couldn't create your account. Please try again."
-        });
+        alert(err);
     }
+
 };
