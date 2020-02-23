@@ -119,11 +119,11 @@ export const signup = (email, password) => async dispatch => {
         myFirebase
             .auth()
             .createUserWithEmailAndPassword(email, password)
-            .signOut()
-            /*.then(dataBeforeEmail => {
+            .then(dataBeforeEmail => {
                 myFirebase.auth().onAuthStateChanged(function (user) {
                     user.sendEmailVerification();
                 });
+                myFirebase.then(() => this.props.navigation.navigate('/'))
             })
             .then(dataAfterEmail => {
                 myFirebase.auth().onAuthStateChanged(function (user) {
@@ -144,7 +144,7 @@ export const signup = (email, password) => async dispatch => {
                     }
                 });
             })
-            */
+
 
             .catch(function (error) {
                 dispatch(
