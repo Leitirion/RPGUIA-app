@@ -12,6 +12,7 @@ import { Redirect } from "react-router-dom";
 import { loginUser } from "../actions";
 import { withStyles } from "@material-ui/styles";
 import { connect } from "react-redux";
+import Image from './img/channel_decor1.jpg';
 
 function Copyright() {
     return (
@@ -29,7 +30,7 @@ const styles = () => ({
         height: '100vh',
     },
     image: {
-        backgroundImage: 'url(https://source.unsplash.com/random)',
+        backgroundImage: 'url(' + Image + ')',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',

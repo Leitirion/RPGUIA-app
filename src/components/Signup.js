@@ -12,6 +12,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Grid from '@material-ui/core/Grid';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 
 function Copyright() {
     return (
@@ -87,63 +89,72 @@ class Signup extends Component {
         const { classes } = this.props;
 
         return (
-            <Container component="main" maxWidth="xs">
-                <CssBaseline />
-                <div className={classes.paper}>
-                    <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        For registration type your email and password:
+            <React.Fragment>
+                <AppBar position="relative" >
+                    <Toolbar>
+                        <Typography variant="h4" color="inherit" noWrap>
+                            RPGUIA
+          </Typography>
+                    </Toolbar>
+                </AppBar>
+                <Container component="main" maxWidth="xs">
+                    <CssBaseline />
+                    <div className={classes.paper}>
+                        <Avatar className={classes.avatar}>
+                            <LockOutlinedIcon />
+                        </Avatar>
+                        <Typography component="h1" variant="h5">
+                            For registration type your email and password:
         </Typography>
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        fullWidth
-                        required
-                        id="email"
-                        label="Email Address"
-                        name="email"
-                        onChange={this.handleEmailChange}
-                    />
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        fullWidth
-                        required
-                        name="password"
-                        label="Password"
-                        type="password"
-                        id="password"
-                        onChange={this.handlePasswordChange}
-                    />
-                    <Grid container spacing={2}>
-                        <Grid item xs={12} sm={6}>
-                            <Button
-                                id="reg_button"
-                                type="button"
-                                variant="contained"
-                                color="primary"
-                                fullWidth
-                                onClick={this.handleSubmit}
-                            >Register</Button>
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                            required
+                            id="email"
+                            label="Email Address"
+                            name="email"
+                            onChange={this.handleEmailChange}
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                            required
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            onChange={this.handlePasswordChange}
+                        />
+                        <Grid container spacing={2}>
+                            <Grid item xs={12} sm={6}>
+                                <Button
+                                    id="reg_button"
+                                    type="button"
+                                    variant="contained"
+                                    color="primary"
+                                    fullWidth
+                                    onClick={this.handleSubmit}
+                                >Register</Button>
+                            </Grid>
+                            {this.renderRedirect()}
+                            <Grid item xs={12} sm={6}>
+                                <Button
+                                    id="back_button"
+                                    type="button"
+                                    variant="outlined"
+                                    fullWidth
+                                    onClick={this.handleSubmit2}
+                                >Back</Button>
+                            </Grid>
                         </Grid>
-                        {this.renderRedirect()}
-                        <Grid item xs={12} sm={6}>
-                            <Button
-                                id="back_button"
-                                type="button"
-                                variant="outlined"
-                                fullWidth
-                                onClick={this.handleSubmit2}
-                            >Back</Button>
-                        </Grid>
-                    </Grid>
-                </div>
-                <Box mt={5}>
-                    <Copyright />
-                </Box>
-            </Container>
+                    </div>
+                    <Box mt={5}>
+                        <Copyright />
+                    </Box>
+                </Container>
+            </React.Fragment>
         );
     }
 }
