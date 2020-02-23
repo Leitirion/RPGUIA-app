@@ -5,30 +5,41 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { signup } from "../actions";
 import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 import { withStyles } from "@material-ui/styles";
+import Box from '@material-ui/core/Box';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Avatar from '@material-ui/core/Avatar';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Grid from '@material-ui/core/Grid';
 
+function Copyright() {
+    return (
+        <Typography variant="body2" color="textSecondary" align="center">
+            {'Copyright © '}
+            <i>By GIF</i>
+            {' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+    );
+}
 
 const styles = () => ({
-    "@global": {
-        body: {
-            backgroundColor: "#fff"
-        }
+    root: {
+        height: '100vh',
     },
     paper: {
-        marginTop: 100,
-        display: "flex",
-        padding: 20,
-        flexDirection: "column",
-        alignItems: "center"
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
     },
     avatar: {
-        marginLeft: "auto",
-        marginRight: "auto",
+        marginTop: 100,
         backgroundColor: "#f92343"
     },
     form: {
+        width: '100%', // Fix IE 11 issue.
         marginTop: 1
     },
     errorText: {
@@ -37,6 +48,7 @@ const styles = () => ({
         textAlign: "center"
     }
 });
+
 
 class Signup extends Component {
     state = { email: "", password: "", redirect: false };
@@ -52,7 +64,6 @@ class Signup extends Component {
     handleSubmit = () => {
         const { dispatch } = this.props;
         const { email, password } = this.state;
-
         dispatch(signup(email, password));
     };
     setRedirect = () => {
@@ -73,19 +84,23 @@ class Signup extends Component {
     }
 
     render() {
-        const { classes, signUpfail } = this.props;
+        const { classes } = this.props;
 
         return (
-
             <Container component="main" maxWidth="xs">
-                <Paper className={classes.paper}>
+                <CssBaseline />
+                <div className={classes.paper}>
+                    <Avatar className={classes.avatar}>
+                        <LockOutlinedIcon />
+                    </Avatar>
                     <Typography component="h1" variant="h5">
                         For registration type your email and password:
-            </Typography>
+        </Typography>
                     <TextField
                         variant="outlined"
                         margin="normal"
                         fullWidth
+                        required
                         id="email"
                         label="Email Address"
                         name="email"
@@ -95,40 +110,43 @@ class Signup extends Component {
                         variant="outlined"
                         margin="normal"
                         fullWidth
+                        required
                         name="password"
                         label="Password"
                         type="password"
                         id="password"
                         onChange={this.handlePasswordChange}
                     />
-                    {signUpfail && (
-                        <Typography component="p" className={classes.errorText}>
-
-                        </Typography>
-                    )}
-
-                    <div className="form-group"  >
-                        <Button
-                            id="reg_button"
-                            type="button"
-                            variant="contained"
-                            color="primary"
-                            //className={classes.submit}
-                            onClick={this.handleSubmit}
-                        >Register</Button>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} sm={6}>
+                            <Button
+                                id="reg_button"
+                                type="button"
+                                variant="contained"
+                                color="primary"
+                                fullWidth
+                                onClick={this.handleSubmit}
+                            >Register</Button>
+                        </Grid>
                         {this.renderRedirect()}
-                        <Button
-                            id="back_button"
-                            type="button"
-                            onClick={this.handleSubmit2}
-                        >Back</Button>
-                    </div>
-                </Paper>
+                        <Grid item xs={12} sm={6}>
+                            <Button
+                                id="back_button"
+                                type="button"
+                                variant="outlined"
+                                fullWidth
+                                onClick={this.handleSubmit2}
+                            >Back</Button>
+                        </Grid>
+                    </Grid>
+                </div>
+                <Box mt={5}>
+                    <Copyright />
+                </Box>
             </Container>
         );
     }
 }
-
 function mapStateToProps(state) {
     return {
         loginSuccess: state.auth.loginSuccess,

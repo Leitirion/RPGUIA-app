@@ -144,19 +144,10 @@ export const signup = (email, password) => async dispatch => {
                     }
                 });
             })
-
-
-            /* .catch(function (error) {
-                 dispatch(
-                     signUpfail());
-             });
-    */
-
             .catch(error => {
                 alert(error.message);
             })
     } catch (err) {
         alert(err);
     }
-
 };

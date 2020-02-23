@@ -23,24 +23,37 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import test from "./components/test";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 function App(props) {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const theme = React.useMemo(
+    () =>
+      createMuiTheme({
+        palette: {
+          type: prefersDarkMode ? 'dark' : 'light',
+        },
+      }),
+    [prefersDarkMode],
+  );
+
   const { isAuthenticated, isVerifying, isRegistred } = props;
   return (
-    <Switch>
-      <ProtectedRoute
-        exact
-        path="/"
-        component={Home}
-        isAuthenticated={isAuthenticated}
-        isVerifying={isVerifying}
-        isRegistred={isRegistred}
-      />
-      <Route path="/login" component={Login} />
-      <Route path="/signup" component={Signup} />
-      <Route path="/test" component={test} />
-    </Switch>
+    <ThemeProvider theme={theme}>
+      <Switch>
+        <ProtectedRoute
+          exact
+          path="/"
+          component={Home}
+          isAuthenticated={isAuthenticated}
+          isVerifying={isVerifying}
+          isRegistred={isRegistred}
+        />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+      </Switch>
+    </ThemeProvider>
   );
 }
 

@@ -1,47 +1,63 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
 import { Redirect } from "react-router-dom";
 import { loginUser } from "../actions";
 import { withStyles } from "@material-ui/styles";
+import { connect } from "react-redux";
 
-import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
-import Container from "@material-ui/core/Container";
-
-
+function Copyright() {
+    return (
+        <Typography variant="body2" color="textSecondary" align="center">
+            {'Copyright © '}
+            <i>By GIF</i>
+            {' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+    );
+}
 const styles = () => ({
-    "@global": {
-        body: {
-            backgroundColor: "#fff"
-        }
+    root: {
+        height: '100vh',
+    },
+    image: {
+        backgroundImage: 'url(https://source.unsplash.com/random)',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
     },
     paper: {
-        marginTop: 100,
-        display: "flex",
-        padding: 20,
-        flexDirection: "column",
-        alignItems: "center"
+        marginLeft: 30,
+        marginRight: 30,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
     },
     avatar: {
-        marginLeft: "auto",
-        marginRight: "auto",
+        marginTop: 100,
         backgroundColor: "#f92343"
     },
     form: {
-        marginTop: 1
+        width: '100%', // Fix IE 11 issue.
+        marginTop: 1,
     },
     errorText: {
         color: "#f50057",
-        marginBottom: 5,
+        marginBottom: 10,
         textAlign: "center"
     }
-});
 
+});
 class Login extends Component {
+
     state = { email: "", password: "", redirect: false };
 
     handleEmailChange = ({ target }) => {
@@ -78,7 +94,7 @@ class Login extends Component {
         if (event.key === "Enter") {
             document.getElementById("signin").click();
         }
-      }
+    }
 
     render() {
         const { classes, loginError, isAuthenticated } = this.props;
@@ -86,69 +102,79 @@ class Login extends Component {
             return <Redirect to="/" />;
         } else {
             return (
-                <Container component="main" maxWidth="xs">
-                    <Paper className={classes.paper}>
-                        <Avatar className={classes.avatar}>
-                            <LockOutlinedIcon />
-                        </Avatar>
-                        <Typography component="h1" variant="h5">
-                            
+                <Grid container component="main" className={classes.root} >
+                    <CssBaseline />
+                    <Grid item xs={false} sm={4} md={7} className={classes.image} />
+                    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+                        <div className={classes.paper}>
+                            <Avatar className={classes.avatar}>
+                                <LockOutlinedIcon />
+                            </Avatar>
+                            <Typography component="h1" variant="h5">
                                 Welcome! Sign in:
-                
-                        </Typography>
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            onChange={this.handleEmailChange}
-                        />
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            onChange={this.handlePasswordChange}
-                            onKeyPress={this.keyPressed}
-                        />
-                        {loginError && (
-                            <Typography component="p" className={classes.errorText}>
-                                Incorrect email or password.
-              </Typography>
-                        )}
-                        <Button
-                            type="button"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            id="signin"
-                            className={classes.submit}
-                            onClick={this.handleSubmit}
-                        >
-                            Sign In
+                            </Typography>
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                label="Email Address"
+                                name="email"
+                                onChange={this.handleEmailChange}
+                            />
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                fullWidth
+                                required
+                                name="password"
+                                label="Password"
+                                type="password"
+                                id="password"
+
+                                onChange={this.handlePasswordChange}
+                                onKeyPress={this.keyPressed}
+                            />
+                            {loginError && (
+                                <Typography component="p" className={classes.errorText}>
+                                    Incorrect email or password.
+                                </Typography>)}
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                    <Button
+                                        type="submit"
+                                        fullWidth
+                                        variant="contained"
+                                        color="primary"
+                                        id="signin"
+                                        className={classes.submit}
+                                        onClick={this.handleSubmit}
+                                    >Sign In
+                            </Button>
+                                </Grid>
+                                {this.renderRedirect()}
+                                <Grid item xs={12} sm={6}>
+                                    <Button
+                                        type="button"
+                                        fullWidth
+                                        id="signup"
+                                        className={classes.submit}
+                                        onClick={this.handleSubmit2}
+                                    >Not registered yet? Sign Up!
                         </Button>
-                        {this.renderRedirect()}
-                        <Button
-                            type="button"
-                            fullWidth
-                            id="signup"
-                            className={classes.submit}
-                            onClick={this.handleSubmit2}
-                        >
-                            Not registered yet? Sign Up!
-                        </Button>
-                    </Paper>
-                </Container>
+                                </Grid>
+                            </Grid>
+                            <Box mt={5}>
+                                <Copyright />
+                            </Box>
+                        </div>
+                    </Grid>
+                </Grid>
             );
         }
     }
 }
-
 function mapStateToProps(state) {
     return {
         isLoggingIn: state.auth.isLoggingIn,
