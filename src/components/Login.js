@@ -13,6 +13,7 @@ import { loginUser } from "../actions";
 import { withStyles } from "@material-ui/styles";
 import { connect } from "react-redux";
 import Image from './img/channel_decor1.jpg';
+import Toolbar from '@material-ui/core/Toolbar';
 
 function Copyright() {
     return (
@@ -42,9 +43,12 @@ const styles = () => ({
         flexDirection: 'column',
         alignItems: 'center',
     },
+    toolbar: {
+        marginTop: 100
+    },
     avatar: {
-        marginTop: 100,
-        backgroundColor: "#f92343"
+        backgroundColor: "#f92343",
+        margin: 5
     },
     form: {
         width: '100%', // Fix IE 11 issue.
@@ -108,12 +112,14 @@ class Login extends Component {
                     <Grid item xs={false} sm={4} md={7} className={classes.image} />
                     <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
                         <div className={classes.paper}>
-                            <Avatar className={classes.avatar}>
-                                <LockOutlinedIcon />
-                            </Avatar>
-                            <Typography component="h1" variant="h5">
-                                Welcome! Sign in:
+                            <Toolbar className={classes.toolbar}>
+                                <Avatar className={classes.avatar}>
+                                    <LockOutlinedIcon />
+                                </Avatar>
+                                <Typography component="h1" variant="h5">
+                                    Welcome! Sign in:
                             </Typography>
+                            </Toolbar>
                             <TextField
                                 variant="outlined"
                                 margin="normal"

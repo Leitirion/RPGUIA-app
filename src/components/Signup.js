@@ -10,10 +10,10 @@ import { withStyles } from "@material-ui/styles";
 import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Avatar from '@material-ui/core/Avatar';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 
 function Copyright() {
     return (
@@ -90,18 +90,22 @@ class Signup extends Component {
 
         return (
             <React.Fragment>
-                <AppBar position="relative" >
+                <AppBar>
                     <Toolbar>
-                        <Typography variant="h4" color="inherit" noWrap>
-                            RPGUIA
-          </Typography>
+                        <AccountCircleOutlinedIcon style={{
+                            color: 'red'
+                        }}></AccountCircleOutlinedIcon>
+                        <Button>
+                            <Typography variant="h5" color="inherit" noWrap onClick={this.handleSubmit2}>
+                                RPGUIA
+                            </Typography>
+                        </Button>
                     </Toolbar>
                 </AppBar>
                 <Container component="main" maxWidth="xs">
                     <CssBaseline />
                     <div className={classes.paper}>
                         <Avatar className={classes.avatar}>
-                            <LockOutlinedIcon />
                         </Avatar>
                         <Typography component="h1" variant="h5">
                             For registration type your email and password:
@@ -154,7 +158,7 @@ class Signup extends Component {
                         <Copyright />
                     </Box>
                 </Container>
-            </React.Fragment>
+            </React.Fragment >
         );
     }
 }

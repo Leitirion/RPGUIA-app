@@ -9,6 +9,13 @@ import Box from '@material-ui/core/Box';
 import Typography from "@material-ui/core/Typography";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Fab from "@material-ui/core/Fab";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import Zoom from "@material-ui/core/Zoom";
+import PropTypes from "prop-types";
+import useScrollTrigger from "@material-ui/core/useScrollTrigger";
+import { makeStyles } from "@material-ui/core/styles";
+import FormatListNumberedOutlinedIcon from '@material-ui/icons/FormatListNumberedOutlined';
 
 function Copyright() {
     return (
@@ -21,27 +28,71 @@ function Copyright() {
         </Typography>
     );
 }
-
-
+const useStyles = makeStyles(theme => ({
+    root: {
+        position: "fixed",
+        bottom: theme.spacing(2),
+        left: theme.spacing(2)
+    }
+}));
 
 const styles = () => ({
     root: {
-        height: '100vh',
+        height: '100vh'
     },
     paper: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
     },
-    avatar: {
-        marginTop: 100,
-        backgroundColor: "#f92343"
+    title: {
+        flexGrow: 1,
     },
     form: {
         width: '100%', // Fix IE 11 issue.
         marginTop: 1
     }
 });
+
+ScrollTop.propTypes = {
+    children: PropTypes.element.isRequired,
+    /**
+     * Injected by the documentation to work in an iframe.
+     * You won't need it on your project.
+     */
+    window: PropTypes.func,
+};
+
+function ScrollTop(props) {
+    const { children, window } = props;
+    const classes = useStyles();
+    // Note that you normally won't need to set the window ref as useScrollTrigger
+    // will default to window.
+    // This is only being set here because the demo is in an iframe.
+    const trigger = useScrollTrigger({
+        target: window ? window() : undefined,
+        disableHysteresis: true,
+        threshold: 100
+    });
+
+    const handleClick = event => {
+        const anchor = (event.target.ownerDocument || document).querySelector(
+            "#back-to-top-anchor"
+        );
+
+        if (anchor) {
+            anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+    };
+
+    return (
+        <Zoom in={trigger}>
+            <div onClick={handleClick} role="presentation" className={classes.root}>
+                {children}
+            </div>
+        </Zoom>
+    );
+}
 
 class Home extends Component {
     state = {
@@ -102,18 +153,29 @@ class Home extends Component {
         const { classes, isLoggingOut, logoutError } = this.props;
         return (
             <React.Fragment>
-                <AppBar position="relative" >
+                <AppBar>
                     <Toolbar>
-                        <Typography variant="h4" color="inherit" noWrap>
-                            RPGUIA
-          </Typography>
+                        <FormatListNumberedOutlinedIcon style={{
+                            color: 'red'
+                        }}></FormatListNumberedOutlinedIcon>
+                        <Button>
+                            <Typography variant="h5" color="inherit" noWrap onClick={this.handleSubmit2}>
+                                RPGUIA
+                            </Typography>
+                        </Button>
+                        <Typography variant="h5" color="inherit" noWrap className={classes.title} >
+                        </Typography>
+                        <Button
+                            id="logout"
+                            onClick={this.handleLogout}>Logout</Button>
                     </Toolbar>
                 </AppBar>
+                <Toolbar id="back-to-top-anchor" />
                 <Container component="main" >
                     <CssBaseline />
                     <div class="title">
                         <div className={classes.paper}>
-                            <div class="title_for_homepage">
+                            <div class="title_for_homepage" style={{ marginTop: 10 }}>
                                 <center>
                                     <h1>Hello to your login page!</h1>
                                 </center>
@@ -162,13 +224,6 @@ class Home extends Component {
                                             }
 
                                         </ul>
-                                        <center>
-                                            <Button
-                                                variant="contained"
-                                                color="primary"
-                                                id="logout"
-                                                onClick={this.handleLogout}>Logout</Button>
-                                        </center>
                                     </main>
                                 </div>
                             </div>
@@ -181,7 +236,12 @@ class Home extends Component {
                         <Copyright />
                     </Box>
                 </Container>
-            </React.Fragment>
+                <ScrollTop {...Home}>
+                    <Fab color="secondary" size="medium" aria-label="scroll back to top">
+                        <KeyboardArrowUpIcon />
+                    </Fab>
+                </ScrollTop>
+            </React.Fragment >
         );
     }
 }
