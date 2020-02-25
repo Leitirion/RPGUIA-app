@@ -64,12 +64,12 @@ const verifySuccess = () => {
 };
 
 
-const signUpfail = () => {
+/*const signUpfail = () => {
     return {
         type: SIGNUP_ERROR
     };
 };
-
+*/
 
 
 

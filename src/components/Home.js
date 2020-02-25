@@ -16,6 +16,7 @@ import PropTypes from "prop-types";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import { makeStyles } from "@material-ui/core/styles";
 import FormatListNumberedOutlinedIcon from '@material-ui/icons/FormatListNumberedOutlined';
+import Tooltip from '@material-ui/core/Tooltip';
 
 function Copyright() {
     return (
@@ -153,29 +154,32 @@ class Home extends Component {
         const { classes, isLoggingOut, logoutError } = this.props;
         return (
             <React.Fragment>
-                <AppBar>
+                <AppBar style={{ background: '#444242' }}>
                     <Toolbar>
                         <FormatListNumberedOutlinedIcon style={{
                             color: 'red'
                         }}></FormatListNumberedOutlinedIcon>
                         <Button>
-                            <Typography variant="h5" color="inherit" noWrap onClick={this.handleSubmit2}>
-                                RPGUIA
+                            <Tooltip title="Home">
+                                <Typography variant="h5" color="inherit" noWrap onClick={this.handleSubmit2}>
+                                    RPGUIA
                             </Typography>
+                            </Tooltip>
                         </Button>
                         <Typography variant="h5" color="inherit" noWrap className={classes.title} >
                         </Typography>
-                        <Button
-                            id="logout"
-                            onClick={this.handleLogout}>Logout</Button>
+                        <Tooltip title="Logout from account">
+                            <Button
+                                id="logout"
+                                onClick={this.handleLogout}>Logout</Button></Tooltip>
                     </Toolbar>
                 </AppBar>
                 <Toolbar id="back-to-top-anchor" />
                 <Container component="main" >
                     <CssBaseline />
-                    <div class="title">
+                    <div className="title">
                         <div className={classes.paper}>
-                            <div class="title_for_homepage" style={{ marginTop: 10 }}>
+                            <div className="title_for_homepage" style={{ marginTop: 10 }}>
                                 <center>
                                     <h1>Hello to your login page!</h1>
                                 </center>
@@ -207,18 +211,19 @@ class Home extends Component {
                                                             position: 'absolute',
                                                             textDecoration: (item.done) ? 'line-through' : 'none',
                                                         }}>{item.text}</span>
-                                                        <button id="del_button" onClick={() => this.handleRemove(key)} type="button"
-                                                            className="btn btn-sm btn-danger"
-                                                            style={{
-                                                                position: 'absolute',
-                                                                top: 0,
-                                                                bottom: 0,
-                                                                right: '1.25rem',
-                                                                margin: 'auto 0',
-                                                                height: '25px',
-                                                                paddingTop: 0,
-                                                                paddingBottom: 0,
-                                                            }}>&times;</button>
+                                                        <Tooltip title="Delete current todo">
+                                                            <button id="del_button" onClick={() => this.handleRemove(key)} type="button"
+                                                                className="btn btn-sm btn-danger"
+                                                                style={{
+                                                                    position: 'absolute',
+                                                                    top: 0,
+                                                                    bottom: 0,
+                                                                    right: '1.25rem',
+                                                                    margin: 'auto 0',
+                                                                    height: '25px',
+                                                                    paddingTop: 0,
+                                                                    paddingBottom: 0,
+                                                                }}>&times;</button></Tooltip>
                                                     </li>
                                                 )))
                                             }
@@ -241,7 +246,7 @@ class Home extends Component {
                         <KeyboardArrowUpIcon />
                     </Fab>
                 </ScrollTop>
-            </React.Fragment >
+            </React.Fragment>
         );
     }
 }

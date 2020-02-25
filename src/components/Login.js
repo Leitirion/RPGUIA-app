@@ -17,6 +17,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
+import Tooltip from '@material-ui/core/Tooltip';
 
 function Copyright() {
     return (
@@ -50,7 +51,7 @@ function SimpleSnackbar() {
                     <React.Fragment>
                         <Button color="secondary" size="small" onClick={handleClose}>
                             OK
-            </Button>
+                        </Button>
                         <IconButton
                             size="small"
                             aria-label="close"
@@ -189,16 +190,17 @@ class Login extends Component {
                                 </Typography>)}
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={6}>
-                                    <Button
-                                        type="submit"
-                                        fullWidth
-                                        variant="contained"
-                                        color="primary"
-                                        id="signin"
-                                        className={classes.submit}
-                                        onClick={this.handleSubmit}
-                                    >Sign In
-                            </Button>
+                                    <Tooltip title="Sing in">
+                                        <Button
+                                            type="submit"
+                                            fullWidth
+                                            variant="contained"
+                                            color="primary"
+                                            id="signin"
+                                            className={classes.submit}
+                                            onClick={this.handleSubmit}
+                                        >Sign In
+                            </Button></Tooltip>
                                 </Grid>
                                 {this.renderRedirect()}
                                 <Grid item xs={12} sm={6}>

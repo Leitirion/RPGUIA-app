@@ -14,6 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import Tooltip from '@material-ui/core/Tooltip';
 
 function Copyright() {
     return (
@@ -88,16 +89,18 @@ class Signup extends Component {
         const { classes } = this.props;
         return (
             <React.Fragment>
-                <AppBar>
+                <AppBar style={{ background: '#444242' }}>
                     <Toolbar>
                         <AccountCircleOutlinedIcon style={{
                             color: 'red'
                         }}></AccountCircleOutlinedIcon>
-                        <Button>
-                            <Typography variant="h5" color="inherit" noWrap onClick={this.handleSubmit2}>
-                                RPGUIA
+                        <Tooltip title="Home">
+                            <Button>
+                                <Typography variant="h5" noWrap onClick={this.handleSubmit2}>
+                                    RPGUIA
                             </Typography>
-                        </Button>
+                            </Button>
+                        </Tooltip>
                     </Toolbar>
                 </AppBar>
                 <Container component="main" maxWidth="xs">
@@ -131,24 +134,26 @@ class Signup extends Component {
                         />
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
-                                <Button
-                                    id="reg_button"
-                                    type="button"
-                                    variant="contained"
-                                    color="primary"
-                                    fullWidth
-                                    onClick={this.handleSubmit}
-                                >Register</Button>
+                                <Tooltip title="Register your account">
+                                    <Button
+                                        id="reg_button"
+                                        type="button"
+                                        variant="contained"
+                                        color="primary"
+                                        fullWidth
+                                        onClick={this.handleSubmit}
+                                    >Register</Button></Tooltip>
                             </Grid>
                             {this.renderRedirect()}
                             <Grid item xs={12} sm={6}>
-                                <Button
-                                    id="back_button"
-                                    type="button"
-                                    variant="outlined"
-                                    fullWidth
-                                    onClick={this.handleSubmit2}
-                                >Back</Button>
+                                <Tooltip title="Back to login page">
+                                    <Button
+                                        id="back_button"
+                                        type="button"
+                                        variant="outlined"
+                                        fullWidth
+                                        onClick={this.handleSubmit2}
+                                    >Back</Button></Tooltip>
                             </Grid>
                         </Grid>
                     </div>
