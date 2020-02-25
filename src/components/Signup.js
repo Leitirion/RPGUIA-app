@@ -51,7 +51,6 @@ const styles = () => ({
     }
 });
 
-
 class Signup extends Component {
     state = { email: "", password: "", redirect: false };
 
@@ -87,7 +86,6 @@ class Signup extends Component {
 
     render() {
         const { classes } = this.props;
-
         return (
             <React.Fragment>
                 <AppBar>
@@ -109,7 +107,7 @@ class Signup extends Component {
                         </Avatar>
                         <Typography component="h1" variant="h5">
                             For registration type your email and password:
-        </Typography>
+                        </Typography>
                         <TextField
                             variant="outlined"
                             margin="normal"
@@ -158,7 +156,7 @@ class Signup extends Component {
                         <Copyright />
                     </Box>
                 </Container>
-            </React.Fragment >
+            </React.Fragment>
         );
     }
 }

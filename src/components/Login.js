@@ -14,6 +14,9 @@ import { withStyles } from "@material-ui/styles";
 import { connect } from "react-redux";
 import Image from './img/channel_decor1.jpg';
 import Toolbar from '@material-ui/core/Toolbar';
+import Snackbar from "@material-ui/core/Snackbar";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
 
 function Copyright() {
     return (
@@ -26,6 +29,43 @@ function Copyright() {
         </Typography>
     );
 }
+
+function SimpleSnackbar() {
+    const [open, setOpen] = React.useState(true);
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    return (
+        <div>
+            <Snackbar
+                anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "left"
+                }}
+                open={open}
+                autoHideDuration={60000}
+                message="Like many websites, ours uses cookies. Cookies are small text files that we put on your computer, that allow us to provide you with a better browsing experience. By using this website, you agree to let us use cookies. "
+                action={
+                    <React.Fragment>
+                        <Button color="secondary" size="small" onClick={handleClose}>
+                            OK
+            </Button>
+                        <IconButton
+                            size="small"
+                            aria-label="close"
+                            color="inherit"
+                            onClick={handleClose}
+                        >
+                            <CloseIcon fontSize="small" />
+                        </IconButton>
+                    </React.Fragment>
+                }
+            />
+        </div>
+    );
+}
+
 const styles = () => ({
     root: {
         height: '100vh',
@@ -175,6 +215,7 @@ class Login extends Component {
                             <Box mt={5}>
                                 <Copyright />
                             </Box>
+                            <SimpleSnackbar />
                         </div>
                     </Grid>
                 </Grid>
