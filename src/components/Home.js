@@ -186,7 +186,7 @@ class Home extends Component {
                                 <center>
                                     {
                                         user
-                                            ? < h2 > Hello {user.displayName}!</h2>
+                                            ? < h2 > Hello {user.displayName}</h2>
                                             : <h2>Hello to your login page!</h2>
                                     }
                                 </center>
