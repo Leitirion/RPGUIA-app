@@ -18,6 +18,10 @@ import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Tooltip from '@material-ui/core/Tooltip';
+import withFirebaseAuth from 'react-with-firebase-auth'
+import { myFirebase } from "../firebase/firebase";
+import * as firebase from 'firebase/app';
+import Image1 from './img/google.png';
 
 function Copyright() {
     return (
@@ -76,6 +80,11 @@ const styles = () => ({
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+    },
+    image1: {
+        backgroundImage: 'url(' + Image1 + ')',
+        width: 15,
+        height: 30
     },
     paper: {
         marginLeft: 30,
@@ -143,7 +152,7 @@ class Login extends Component {
     }
 
     render() {
-        const { classes, loginError, isAuthenticated } = this.props;
+        const { classes, loginError, isAuthenticated, signInWithGoogle } = this.props;
         if (isAuthenticated) {
             return <Redirect to="/" />;
         } else {
@@ -186,7 +195,7 @@ class Login extends Component {
                             />
                             {loginError && (
                                 <Typography component="p" className={classes.errorText}>
-                                    Incorrect email or password.
+                                    Incorrect email or password. Please try again.
                                 </Typography>)}
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={6}>
@@ -199,22 +208,33 @@ class Login extends Component {
                                             id="signin"
                                             className={classes.submit}
                                             onClick={this.handleSubmit}
-                                        >Sign In
-                            </Button></Tooltip>
+                                        >Sign In with email
+                                        </Button>
+                                    </Tooltip>
                                 </Grid>
                                 {this.renderRedirect()}
                                 <Grid item xs={12} sm={6}>
-                                    <Button
-                                        type="button"
-                                        fullWidth
-                                        id="signup"
-                                        className={classes.submit}
-                                        onClick={this.handleSubmit2}
-                                    >Not registered yet? Sign Up!
-                        </Button>
+                                    <Tooltip title="Sing in with Google">
+                                        <Button
+                                            fullWidth
+                                            type="button"
+                                            id="signupGoogle"
+                                            variant="outlined"
+                                            onClick={signInWithGoogle}>
+                                            Sign in with Google
+                                        </Button>
+                                    </Tooltip>
                                 </Grid>
                             </Grid>
-                            <Box mt={5}>
+                            <Button
+                                style={{ marginTop: 10 }}
+                                type="button"
+                                id="signup"
+                                className={classes.submit}
+                                onClick={this.handleSubmit2}
+                            >Not registered yet? Sign Up!
+                            </Button>
+                            <Box mt={2}>
                                 <Copyright />
                             </Box>
                             <SimpleSnackbar />
@@ -225,6 +245,11 @@ class Login extends Component {
         }
     }
 }
+const firebaseAppAuth = myFirebase.auth();
+
+const providers = {
+    googleProvider: new firebase.auth.GoogleAuthProvider(),
+};
 function mapStateToProps(state) {
     return {
         isLoggingIn: state.auth.isLoggingIn,
@@ -233,4 +258,7 @@ function mapStateToProps(state) {
     };
 }
 
-export default withStyles(styles)(connect(mapStateToProps)(Login));
+export default withFirebaseAuth({
+    providers,
+    firebaseAppAuth,
+})(withStyles(styles)(connect(mapStateToProps)(Login)));

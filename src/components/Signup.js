@@ -168,9 +168,7 @@ class Signup extends Component {
 function mapStateToProps(state) {
     return {
         loginSuccess: state.auth.loginSuccess,
-        isAuthenticated: state.auth.isAuthenticated,
-        signUpfail: state.auth.signUpfail
-
+        isAuthenticated: state.auth.isAuthenticated
     };
 }
 

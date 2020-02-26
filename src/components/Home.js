@@ -17,6 +17,9 @@ import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import { makeStyles } from "@material-ui/core/styles";
 import FormatListNumberedOutlinedIcon from '@material-ui/icons/FormatListNumberedOutlined';
 import Tooltip from '@material-ui/core/Tooltip';
+import withFirebaseAuth from 'react-with-firebase-auth'
+import { myFirebase } from "../firebase/firebase";
+import * as firebase from 'firebase/app';
 
 function Copyright() {
     return (
@@ -151,7 +154,7 @@ class Home extends Component {
     };
     render() {
         const { todo, todos } = this.state;
-        const { classes, isLoggingOut, logoutError } = this.props;
+        const { classes, isLoggingOut, logoutError, user } = this.props;
         return (
             <React.Fragment>
                 <AppBar style={{ background: '#444242' }}>
@@ -181,7 +184,11 @@ class Home extends Component {
                         <div className={classes.paper}>
                             <div className="title_for_homepage" style={{ marginTop: 10 }}>
                                 <center>
-                                    <h1>Hello to your login page!</h1>
+                                    {
+                                        user
+                                            ? < h2 > Hello {user.displayName}!</h2>
+                                            : <h2>Hello to your login page!</h2>
+                                    }
                                 </center>
                             </div>
                             <div className="container-fluid">
@@ -227,12 +234,10 @@ class Home extends Component {
                                                     </li>
                                                 )))
                                             }
-
                                         </ul>
                                     </main>
                                 </div>
                             </div>
-
                             {isLoggingOut && <p>Logging Out....</p>}
                             {logoutError && <p>Error logging out</p>}
                         </div>
@@ -250,10 +255,18 @@ class Home extends Component {
         );
     }
 }
+const firebaseAppAuth = myFirebase.auth();
+
+const providers = {
+    googleProvider: new firebase.auth.GoogleAuthProvider(),
+};
 function mapStateToProps(state) {
     return {
         isLoggingOut: state.auth.isLoggingOut,
         logoutError: state.auth.logoutError
     };
 }
-export default withStyles(styles)(connect(mapStateToProps)(Home));
+export default withFirebaseAuth({
+    providers,
+    firebaseAppAuth,
+})(withStyles(styles)(connect(mapStateToProps)(Home)));

@@ -81,12 +81,12 @@ export default (
                 ...state,
                 loginSuccess: false,
                 isAuthenticated: false,
-                signUpfail: true
+                signError: true
             };
         case SIGNUP_SUCCESS:
             return {
                 ...state,
-                signUpfail: false,
+                signError: false,
                 loginSuccess: true,
                 isAuthenticated: true,
                 user: action.user
