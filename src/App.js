@@ -1,30 +1,14 @@
-/*import React from 'react';
-import './App.css';
-import { Container } from 'semantic-ui-react';
-import Login from './Login';
-
-
-
-const App = () => (
-
-  <Container>
-    <Login />
-  </Container>
-);
-export default App;
-*/
-
 import React from "react";
 
 import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-
 import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
 
 function App(props) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');

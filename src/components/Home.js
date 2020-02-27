@@ -20,6 +20,10 @@ import Tooltip from '@material-ui/core/Tooltip';
 import withFirebaseAuth from 'react-with-firebase-auth'
 import { myFirebase } from "../firebase/firebase";
 import * as firebase from 'firebase/app';
+import TodoListItem from './todo-list-item';
+import TodoHeader from './todo-header';
+import { database } from "../firebase/firebase";
+
 
 function Copyright() {
     return (
@@ -106,55 +110,103 @@ class Home extends Component {
             done: false,
         }]
     };
-    handleRemove = (index) => {
-        // grab original todos from state
+    componentDidMount() {
+        // fetch posts from Firebase
+        console.log('my props', this.props);
+        database.ref('todos').orderByChild('timestamp').on('value', (snapshot) => {
+            this.newTodos = [];
+            snapshot.forEach((todo) => {
+                this.newTodos.push({ id: todo.key, ...todo.val() });
+            });
+            this.setState({ todos: this.newTodos });
+        });
+    }
+
+
+    handleCheck = (id, checked) => {
+        database.ref('todos').child(id).update({ checked: !checked });
+    }
+
+    handleDelete = (id) => {
+        database.ref('todos').child(id).remove();
+    }
+
+    handleEdit = (id) => {
         const { todos } = this.state;
-        // create an array excluding the array value based on the index
-        this.setState({
-            todo: '',
-            todos: [
-                ...todos.slice(0, index),
-                ...todos.slice(index + 1),
-            ],
+        todos.forEach((todo) => {
+            if (todo.id === id) {
+                database.ref('todos').child(id).update({ edit: true });
+            }
         });
     }
-    handleSubmit = (event) => {
-        // grab original todos from state 
+
+    handleEditSubmit = (e, title, id) => {
+        e.preventDefault();
+        if (title.length === 0) {
+            alert('new title can not be 0');
+            return;
+        }
+
+
         const { todos } = this.state;
-        // todo text is result
-        // append new todo with default state to todos
-        this.setState({
-            todo: '',
-            todos: [
-                {
-                    text: event.currentTarget.todo.value,
-                    done: false,
-                },
-                ...todos,
-            ],
+        todos.forEach((todo) => {
+            if (todo.id === id) {
+                database.ref('todos').child(id).update({ title, edit: false });
+            }
         });
-        event.preventDefault();
     }
-    handleCheckbox = (index) => {
+
+
+    getFilteredTodos = (todos) => {
+        const { filter } = this.state;
+
+        if (filter === 'open') {
+            return todos.filter(todo => !todo.checked);
+        } else if (filter === 'done') {
+            return todos.filter(todo => todo.checked);
+        }
+        return todos;
+    }
+
+    sortTodos = () => {
         const { todos } = this.state;
-        todos[index].done = !todos[index].done;
-        this.setState({
-            todos,
-        });
+        return todos.sort((a, b) => b.timestamp - a.timestamp);
     }
-    handleChange = (event) => {
-        this.setState({
-            todo: event.currentTarget.value,
-        });
-    }
+
+
+
     handleLogout = () => {
         const { dispatch } = this.props;
         dispatch(logoutUser());
 
     };
+
+    renderTodos = () => {
+        const sortedTodos = this.sortTodos();
+        const filteredAndSortedTodos = this.getFilteredTodos(sortedTodos);
+
+        return filteredAndSortedTodos.map((todo, id) => (
+
+            <TodoListItem
+
+                title={todo.title}
+                key={id}
+                checked={todo.checked}
+                id={todo.id}
+                handleCheck={this.handleCheck}
+                handleDelete={this.handleDelete}
+                edit={todo.edit}
+                handleDoubleClick={this.handleEdit}
+                handleEditSubmit={this.handleEditSubmit}
+            />
+
+        ));
+    }
     render() {
-        const { todo, todos } = this.state;
         const { classes, isLoggingOut, logoutError, user } = this.props;
+        if (!this.state.todos) {
+            return <div> Loading </div>;
+        }
         return (
             <React.Fragment>
                 <AppBar style={{ background: '#444242' }}>
@@ -166,7 +218,7 @@ class Home extends Component {
                             <Tooltip title="Home">
                                 <Typography variant="h5" color="inherit" noWrap onClick={this.handleSubmit2}>
                                     RPGUIA
-                            </Typography>
+                        </Typography>
                             </Tooltip>
                         </Button>
                         <Typography variant="h5" color="inherit" noWrap className={classes.title} >
@@ -191,57 +243,15 @@ class Home extends Component {
                                     }
                                 </center>
                             </div>
-                            <div className="container-fluid">
-                                <div className="row">
-                                    <header style={{ margin: '20px 0 40px 0' }} className="App-header col col-12"></header>
-                                    <main className="col col-12">
-                                        <form onSubmit={this.handleSubmit} style={{ marginBottom: '20px' }}>
-                                            <input id="todo" name="todo" onChange={this.handleChange} value={todo} className="form-control" type="text" placeholder="Enter todo here...[Press Enter]" autoComplete="off" />
-                                        </form>
-                                        <ul className="todos list-groups" style={{ padding: 0 }}>
-                                            {(todos.length === 0)
-                                                ? (<li className="todo list-group-item" style={{
-                                                    color: 'rgb(100, 100, 100)'
-                                                }}
-                                                > No todos yet</li>)
-                                                : (todos.map((item, key) => (
-                                                    <li checked={item.done} key={`list-${(key + 1)}`} className="todo list-group-item">
-                                                        <input onChange={() => this.handleCheckbox(key)} checked={item.done} className="form-control" type="checkbox" />
-                                                        <span id="item_text" style={{
-                                                            color: 'rgb(100, 100, 100)',
-                                                            top: 0,
-                                                            bottom: 0,
-                                                            left: '3rem',
-                                                            right: '5rem',
-                                                            lineHeight: '62px',
-                                                            display: 'block',
-                                                            position: 'absolute',
-                                                            textDecoration: (item.done) ? 'line-through' : 'none',
-                                                        }}>{item.text}</span>
-                                                        <Tooltip title="Delete current todo">
-                                                            <button id="del_button" onClick={() => this.handleRemove(key)} type="button"
-                                                                className="btn btn-sm btn-danger"
-                                                                style={{
-                                                                    position: 'absolute',
-                                                                    top: 0,
-                                                                    bottom: 0,
-                                                                    right: '1.25rem',
-                                                                    margin: 'auto 0',
-                                                                    height: '25px',
-                                                                    paddingTop: 0,
-                                                                    paddingBottom: 0,
-                                                                }}>&times;</button></Tooltip>
-                                                    </li>
-                                                )))
-                                            }
-                                        </ul>
-                                    </main>
-                                </div>
-                            </div>
-                            {isLoggingOut && <p>Logging Out....</p>}
-                            {logoutError && <p>Error logging out</p>}
                         </div>
                     </div>
+                    <div>
+                        <TodoHeader style={{ marginTop: 100 }} filterTodos={this.setFilter} />
+                        {this.renderTodos()}
+
+                    </div>
+                    {isLoggingOut && <p>Logging Out....</p>}
+                    {logoutError && <p>Error logging out</p>}
                     <Box mt={5}>
                         <Copyright />
                     </Box>
