@@ -120,29 +120,33 @@ export const signup = (email, password) => async dispatch => {
             .auth()
             .createUserWithEmailAndPassword(email, password)
             .then(dataBeforeEmail => {
-                myFirebase.auth().onAuthStateChanged(function (user) {
-                    user.sendEmailVerification();
-                });
-                myFirebase.then(() => this.props.navigation.navigate('/'))
+                myFirebase
+                    .auth()
+                    .onAuthStateChanged(function (user) {
+                        user.sendEmailVerification();
+                    });
+                myFirebase
+                    .then(() => this.props.navigation.navigate('/'))
             })
             .then(dataAfterEmail => {
-                myFirebase.auth().onAuthStateChanged(function (user) {
-                    if (user.emailVerified) {
-                        // Email is verified
-                        dispatch({
-                            type: SIGNUP_SUCCESS,
-                            payload:
-                                "Your account was successfully created! Now you need to verify your e-mail address, please go check your inbox."
-                        });
-                    } else {
-                        // Email is not verified
-                        dispatch({
-                            type: SIGNUP_ERROR,
-                            payload:
-                                "Something went wrong, we couldn't create your account. Please try again."
-                        });
-                    }
-                });
+                myFirebase
+                    .auth().onAuthStateChanged(function (user) {
+                        if (user.emailVerified) {
+                            // Email is verified
+                            dispatch({
+                                type: SIGNUP_SUCCESS,
+                                payload:
+                                    "Your account was successfully created! Now you need to verify your e-mail address, please go check your inbox."
+                            });
+                        } else {
+                            // Email is not verified
+                            dispatch({
+                                type: SIGNUP_ERROR,
+                                payload:
+                                    "Something went wrong, we couldn't create your account. Please try again."
+                            });
+                        }
+                    });
             })
             .catch(error => {
                 alert(error.message);
