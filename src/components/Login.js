@@ -226,14 +226,16 @@ class Login extends Component {
                                     </Tooltip>
                                 </Grid>
                             </Grid>
-                            <Button
-                                style={{ marginTop: 10 }}
-                                type="button"
-                                id="signup"
-                                className={classes.submit}
-                                onClick={this.handleSubmit2}
-                            >Not registered yet? Sign Up!
+                            <Tooltip title="Sign Up!">
+                                <Button
+                                    style={{ marginTop: 10 }}
+                                    type="button"
+                                    id="signup"
+                                    className={classes.submit}
+                                    onClick={this.handleSubmit2}
+                                >Not registered yet? Sign Up!
                             </Button>
+                            </Tooltip>
                             <Box mt={2}>
                                 <Copyright />
                             </Box>
