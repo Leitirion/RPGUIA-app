@@ -18,10 +18,10 @@
 ## How to set up firebase
 1. Login to the Firebase Console and add a ```new project```. 
 2. Follow the steps until you arrive at your project home screen. 
-3. Click the ```authentication tab``` from the menu and click the ```Set up sign in``` method button.
+3. Click the ```authentication tab``` from the menu and choose the ```Set up sign in``` method.
 4. Use Email/Password authentication method. 
 5. Click ```edit``` and toggle on the first switch.
-6. After enabling authentication, click the Database menu link and click ```Create Database``` in the cloud Firestore section.
+6. After enabling authentication, click the Database menu link and use ```Create Database``` in the cloud Firestore section.
 7. Select ```Start``` in test mode.
 8. Next, choose the location for your database host that best applies to your project. One of the multi-region choices is usually perfect.
 
