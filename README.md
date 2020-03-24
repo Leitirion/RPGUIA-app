@@ -35,9 +35,9 @@
 ```npm install -g firebase-tools```
 2. When thats finished, run the following command to login to firebase:
 ```firebase login```
-3. After you’ve successfully logged in run this command to initialize firebase in your react-app (make sure you’re in your project directory):
+3. After you’ve successfully logged in run next command to initialize firebase in your react-app (make sure you’re in your project directory):
 ```firebase init```
-4. For React-Redux:
+4. Then install React-Redux:
 ```npm install react-redux```
 5. Let’s also install Redux Thunk. It is a very useful middleware that allows you easily create async actions:
 ```npm install redux-thunk```
