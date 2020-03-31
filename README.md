@@ -26,9 +26,9 @@
 8. Next, choose the location for your database host that best applies to your project. (One of the multi-region choices is usually perfect)
 
 ## How to run and publish
-1. For test project type ```npm run start``` (this show your project on your localhost for tests and changes).
+1. For test project type ```npm run start``` (this open your browser and show your project on localhost for tests and changes).
 2. For manually build project to test machine on surge.sh or on your domen use ```npm run build```.
-3. After test succeed, use command ```firebase deploy``` to build to firebase or your command to build to your domen (this show your project on your domen page).
+3. After test succeed, use command ```firebase deploy``` to build to firebase or type your command to build to custom domen (this show your project on your domen page).
 
 ## How to install
 1. Run the following command to install firebase-tools:
