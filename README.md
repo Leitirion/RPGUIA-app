@@ -11,9 +11,17 @@
   	
 		
   [github.com/leitirion](https://github.com/leitirion)
-	 
+- How to set up firebase	 
 - How to run and publish
 - How to install
+
+## How to set up firebase
+1. Login to the Firebase Console and add a new project. Follow the steps until you arrive at your project home screen. Click the authentication tab from the menu and click the Set up sign in method button.
+We’ll be setting up the Email/Password authentication method. Click edit and toggle on the first switch.
+2. After enabling authentication, click the Database menu link and click Create Database in the cloud Firestore section.
+3. Select Start in test mode.
+4. Next, choose the location for your database host that best applies to your project. One of the multi-region choices is usually perfect.
+5. That's all!
 
 ## How to run and publish
 1. For test project and see work it or not, type ```npm run start``` (this show your project on your localhost).
@@ -36,7 +44,6 @@
 7. And finally, lets install firebase which allows to interact with firebase within react app:
 ```npm install firebase```
 8. For install Material-UI use:
-```npm install @material-ui/core```
+```npm install @material-ui/core``` or install your own framework.
 9. Then install the material icon library:
-```npm install @material-ui/icons```
-
+```npm install @material-ui/icons``` or install your own icon library.

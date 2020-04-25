@@ -18,11 +18,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import FormatListNumberedOutlinedIcon from '@material-ui/icons/FormatListNumberedOutlined';
 import Tooltip from '@material-ui/core/Tooltip';
 import withFirebaseAuth from 'react-with-firebase-auth'
-import { myFirebase } from "../firebase/firebase";
 import * as firebase from 'firebase/app';
 import TodoListItem from './todo-list-item';
 import TodoHeader from './todo-header';
 import { database } from "../firebase/firebase";
+import { myFirebase } from "../firebase/firebase";
+
+
+
 
 
 function Copyright() {

@@ -17,10 +17,8 @@ export default class TodoEdit extends React.Component {
     render() {
         return (
             <div onBlur={e => this.props.handleEditSubmit(e, this.state.value, this.props.id)}>
-                <form
-                    onSubmit={e => this.props.handleEditSubmit(e, this.state.value, this.props.id)}
-                >
-                    <input ref="input" value={this.state.value} onChange={e => this.setState({ value: e.target.value })} />
+                <form onSubmit={e => this.props.handleEditSubmit(e, this.state.value, this.props.id)}>
+                    <input style={{ width: '85%' }} ref="input" value={this.state.value} onChange={e => this.setState({ value: e.target.value })} />
                 </form>
             </div>
         );
