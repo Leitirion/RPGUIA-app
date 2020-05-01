@@ -32,3 +32,6 @@ firestore.rules
 .firebase
 
 /src/Login-old-for-test.js
+/src/components/todo-list.js
+/src/components/Home-copy.js
+/src/components/Login-copy.js
