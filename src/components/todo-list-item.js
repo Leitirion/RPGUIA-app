@@ -16,7 +16,7 @@ const TodoListItem = (props) => {
 
     if (!edit) {
         return (
-            <Col>
+            <Col id="todo_list_col">
                 <div className={`${checkedClass}`} >
                     <Checkbox
                         checked={checked}
