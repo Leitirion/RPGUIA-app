@@ -16,8 +16,8 @@ const TodoListItem = (props) => {
 
     if (!edit) {
         return (
-            <Col>
-                <div className={`${checkedClass}`}>
+            <Col id="todo_list_col">
+                <div className={`${checkedClass}`} >
                     <Checkbox
                         checked={checked}
                         className="right todo-checkbox" type="checkbox" onClick={() => handleCheck(id, checked)}
