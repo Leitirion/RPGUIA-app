@@ -53,7 +53,7 @@
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
     "husky": "^4.0.10",
-    "lint-staged": "^9.5.0"
+    "lint-staged": "^10.2.11"
   },
   "husky": {
     "hooks": {
