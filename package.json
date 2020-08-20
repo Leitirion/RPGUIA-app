@@ -22,7 +22,7 @@
     "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^1.2.0",
-    "surge": "^0.21.3"
+    "surge": "^0.21.6"
   },
   "scripts": {
     "start": "react-scripts start",
