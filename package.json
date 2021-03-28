@@ -16,7 +16,7 @@
     "react-materialize": "^3.9.7",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1",
+    "react-scripts": "4.0.3",
     "react-with-firebase-auth": "^1.3.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
